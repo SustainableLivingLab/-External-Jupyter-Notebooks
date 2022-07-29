@@ -83,8 +83,8 @@ class OpvModel(OpvExec):
 #                 del plugin
 #                 assert(len(not_supported_layers)==0)
         
-        self.input_layer = next(iter(net.inputs))
-        self.input_shape = net.inputs[self.input_layer].shape
+        self.input_layer = next(iter(net.input_info))
+        self.input_shape = net.input_info[self.input_layer].input_data.shape
         self.output_layer = next(iter(net.outputs))
         
         self._SetMachine(ie.load_network(network=net, num_requests=2, device_name=device))
